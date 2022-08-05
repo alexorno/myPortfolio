@@ -188,6 +188,7 @@ nav::after{
     position: absolute;
 
     width: auto;
+    min-width: 770px;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);

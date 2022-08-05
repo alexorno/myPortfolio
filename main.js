@@ -18,7 +18,6 @@ const welcomeText = document.querySelector('.welcome-page h1');
 const stringWelcomeText = welcomeText.textContent;
 const splitWelcomeText = stringWelcomeText.split('');
 
-
 welcomeText.textContent = "";
 
 for(let i=0; i < splitWelcomeText.length; i++){
@@ -46,9 +45,7 @@ function endTimer(){
 };
 
 
-
 const tl = gsap.timeline({defaults: {ease:"power2.inout"}});
-
 tl.from('nav', {y:'-100%',opacity:'0.2', duration: 1,stagger:1 });
 
 
