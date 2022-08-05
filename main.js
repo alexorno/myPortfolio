@@ -14,6 +14,7 @@ let stateCheck = setInterval(() => {
   
 
 document.addEventListener('DOMContentLoaded', () => {
+  // welcome text load
 const welcomeText = document.querySelector('.welcome-page h1');
 const stringWelcomeText = welcomeText.textContent;
 const splitWelcomeText = stringWelcomeText.split('');
@@ -43,13 +44,30 @@ function endTimer(){
   clearInterval(timerWelcomeText);
   timerWelcomeText = null;
 };
-
-
+// intro animation
 const tl = gsap.timeline({defaults: {ease:"power2.inout"}});
+
 tl.from('nav', {y:'-100%',opacity:'0.2', duration: 1,stagger:1 });
+tl.from('.welcome-page h1', {x:'-100px',opacity:'0.2', duration: 0.3,stagger:1 }, '-=0.75');
+
+tl.fromTo('.scrolldown-button', {y:"0", opacity:'0.8'}, {y:'25',opacity:'1', duration:1, repeat:-1, yoyo:true}, '-=0.75')
+// scrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.defaults({ toggleActions: "restart complete restart reset", start: "0% bottom", end: "0% center" });
+
+gsap.timeline({ scrollTrigger: { trigger: ".about-left h1", scrub:1 } })
+.to('.about-right', {
+  keyframes: {
+    '0%': {x:'-500',y:'-1000', opacity:'0'},
+    '25%': {x:'-300',y:'-700'},
+    '50%': {x:'-100',y:'-100'},
+    '100%': {x:'0',y:'0',opacity:'1'},
+  }
+})
 
 
 
+// navigation
   const btnDown = document.querySelector('.scrolldown-button');
   const aboutLeft = document.querySelector('.about-left');
   btnDown.addEventListener('click', () => {

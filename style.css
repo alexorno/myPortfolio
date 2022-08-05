@@ -225,11 +225,12 @@ nav::after{
 .about-inner{
     display: flex;
     flex-direction: row;
+    height: auto;
 }
 .about-left{
     width: 50%;
     align-items: center;
-    margin: auto;
+    margin: 25% auto;
 }
 .about-left h1{
     font-weight: 600;
@@ -242,17 +243,111 @@ nav::after{
     text-align: center;
 }
 .about-right{
+    opacity: 0;
     width: 50%;
     position: relative;
-    clip-path: circle(250px at center);
+    
 }
-.about-right img:last-child{
+.about-right .photo{
+    width: 100%;
+    margin: auto;
+    align-items: center;
+     clip-path: circle(170px at 290px 350px);
+}
+.about-right .photo img:first-child{
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
+    width: 60%;
+    transform: translate(-50%,-50%);
 }
+.about-right .photo img:last-child{
+    position: absolute;
+    left: 50%;
+    bottom: 12.5%;
+    width: 40%;
+    transform: translate(-50%,-50%);
+}
+
+
+.about-right .ufo{
+    
+    width: 100%;
+    position: absolute;
+    bottom: 100%;
+}
+.about-right .ufo img{
+    filter: invert(99.9%);
+}
+.about-right .mainlines{
+    background-color: var(--white-color);
+    position: absolute;
+    height: 900px;
+    width: 10px;
+    border-radius: 5px;
+}
+.about-right .mainlines:nth-child(2){
+    top: 420px;
+    left: 70px;
+    transform: rotate(15deg);
+}
+.about-right .mainlines:nth-child(3){
+    top: 420px;
+    right: 70px;
+    transform: rotate(-15deg);
+}
+.about-right .lines{
+    background-color: var(--white-color);
+    position: absolute;
+    width: 10px;
+    height: 90px;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+.about-right .lines:nth-child(4){
+    transform: rotate(15deg);
+    animation: ufoline1 5s ease infinite alternate;
+}
+.about-right .lines:nth-child(5){
+    transform: rotate(-15deg);
+    animation: ufoline2 5s ease-in infinite alternate;
+}
+.about-right .lines:nth-child(6){
+    transform: rotate(15deg);
+    animation: ufoline3 4s ease-out infinite alternate;
+}
+
+@keyframes ufoline1 {
+    from{ top: 470px;
+        left: 200px;
+    }
+    to{
+        top: 1200px;
+        left: 0px;
+    }
+}
+@keyframes ufoline2{
+    from{top: 550px;
+        right: 180px;
+    }
+    to{
+        top: 1100px;
+        right: 50px;
+    }
+}
+@keyframes ufoline3{
+    from{
+        top: 550px;
+    left: 210px;
+    }
+    to{
+        top: 1150px;
+        left: 110px;
+    }
+}
+
+
+
 
 .skills{
     background: #12283D;
