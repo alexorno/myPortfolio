@@ -10,8 +10,8 @@
     padding: 0;
     margin: 0;
     border: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
     margin: 0;
   }
   
@@ -20,8 +20,8 @@
     padding: 0;
     margin: 0;
     border: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
   }
   
   html {
@@ -89,7 +89,7 @@ body::-webkit-scrollbar {
 }
 
 .loadingscreen img.firstMeteor{
-    filter: invert(99%);
+    filter: invert(99%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
     height: 100px;
     position: absolute;
     right: -10%;
@@ -98,7 +98,7 @@ body::-webkit-scrollbar {
 }
 
 .loadingscreen img.secondMeteor{
-    filter: invert(99%);
+    filter: invert(99%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
     height: 100px;
     position: absolute;
     right: -7%;
@@ -107,7 +107,7 @@ body::-webkit-scrollbar {
 }
 
 .loadingscreen img.thirdMeteor{
-    filter: invert(99%);
+    filter: invert(99%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
     height: 100px;
     position: absolute;
     right: -7%;
@@ -134,7 +134,7 @@ body::-webkit-scrollbar {
 
 
 .wrapper{
-    box-sizing: border-box;
+    box-sizing: content-box;
     max-width: 1206px;
     margin: 0px auto;
     padding: 0px 30px;
@@ -203,7 +203,32 @@ nav::after{
 .welcome-page h1 span.welcomePageLetter{
     opacity: 1;
     transform: rotate3d(0, 1, 0, 0deg)
-
+}
+.containeradditional{
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+    left: 0%;
+    height: auto;
+}
+.alienicon{
+    position: absolute;
+    z-index: 5;
+    left: -5vw;
+    bottom: -5%;
+}
+.alienicon img{
+    height: 50px;
+    filter: invert(99.9%);
+    animation: squezealien 0.5s ease infinite alternate;
+}
+@keyframes squezealien{
+    from{
+        transform: scaleX(0.9);
+    }
+    to{
+        transform: scaleX(1.1);
+    }
 }
 
 
@@ -219,6 +244,7 @@ nav::after{
 }
 
 .aboutme{
+    height: auto;
     background: rgba(18, 48, 61, 0.24);
     box-shadow: 0px -19px 20px rgba(0, 0, 0, 0.25);
 }
@@ -226,6 +252,7 @@ nav::after{
     display: flex;
     flex-direction: row;
     height: auto;
+    
 }
 .about-left{
     width: 50%;
@@ -244,56 +271,62 @@ nav::after{
 }
 .about-right{
     opacity: 0;
-    width: 50%;
+    width: 500px;
     position: relative;
-    
 }
 .about-right .photo{
-    width: 100%;
-    margin: auto;
-    align-items: center;
-     clip-path: circle(170px at 290px 350px);
+    width: 500px;
+     clip-path: circle(120px at 250px 340px);
 }
 .about-right .photo img:first-child{
     position: absolute;
-    bottom: 5%;
-    left: 50%;
-    width: 60%;
+    bottom: 20px;
+    left: 270px;
+    width: 300px;
     transform: translate(-50%,-50%);
 }
 .about-right .photo img:last-child{
     position: absolute;
-    left: 50%;
-    bottom: 12.5%;
-    width: 40%;
+    left: 250px;
+    bottom: 5vw;
+    width: 220px;
     transform: translate(-50%,-50%);
 }
-
+@media screen and (min-width:2000px){
+    .about-right .photo img:last-child{
+    bottom:70px;
+    }
+}
 
 .about-right .ufo{
-    
-    width: 100%;
+    display: block;
+    width: 60%;
     position: absolute;
-    bottom: 100%;
+    bottom: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 .about-right .ufo img{
+    align-self: center;
     filter: invert(99.9%);
 }
 .about-right .mainlines{
     background-color: var(--white-color);
     position: absolute;
-    height: 900px;
+    height: 700px;
     width: 10px;
     border-radius: 5px;
+
 }
 .about-right .mainlines:nth-child(2){
-    top: 420px;
-    left: 70px;
+    top: 210px;
+    left: 0px;
     transform: rotate(15deg);
 }
 .about-right .mainlines:nth-child(3){
-    top: 420px;
-    right: 70px;
+    top: 210px;
+    right: 0px;
     transform: rotate(-15deg);
 }
 .about-right .lines{
@@ -313,37 +346,47 @@ nav::after{
     animation: ufoline2 5s ease-in infinite alternate;
 }
 .about-right .lines:nth-child(6){
-    transform: rotate(15deg);
+    transform: rotate(10deg);
     animation: ufoline3 4s ease-out infinite alternate;
 }
 
 @keyframes ufoline1 {
-    from{ top: 470px;
-        left: 200px;
+    from{ top: 300px;
+        left: 80px;
     }
     to{
-        top: 1200px;
-        left: 0px;
+        top: 700px;
+        left: -10px;
     }
 }
 @keyframes ufoline2{
-    from{top: 550px;
-        right: 180px;
+    from{top: 300px;
+        right: 80px;
     }
     to{
-        top: 1100px;
-        right: 50px;
+        top: 700px;
+        right: -10px;
     }
 }
 @keyframes ufoline3{
     from{
-        top: 550px;
-    left: 210px;
+        top: 230px;
+    left: 150px;
     }
     to{
-        top: 1150px;
-        left: 110px;
+        top: 700px;
+        left: 75px;
     }
+}
+
+.planetadditional{
+    position: fixed;
+    right: 400px;
+    top: -100px;
+}
+.planetadditional img{
+    height: 50px;
+    filter: invert(99.9%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
 }
 
 
@@ -411,18 +454,14 @@ nav::after{
 }
 .skills-list ul li img:hover{
     opacity: 0.9;
-    /* transform: rotate(-10deg); */
-    /* transform: translate(-50%,-50%); */
     animation: stars 1s ease-in-out infinite;
 }
 @keyframes stars{
     0%   {transform: rotateY(0deg);}
   100% {transform: rotateY(360deg);}
-    
-
-     /* from { transform: translateX(120px) rotateY(0deg); }
-to { transform: translateX(120px) rotateY(360deg); } */
 }
+
+
 
 
 .works{
@@ -435,14 +474,53 @@ to { transform: translateX(120px) rotateY(360deg); } */
     padding: 52px;
     margin: 0 auto;
 }
+
+.meteor{
+    position: fixed;
+    left: -100px;
+    top: -100px;
+    
+}
+.meteor img{
+    transform: rotateY(180deg);
+    height: 80px;
+    filter:invert(99.9%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
+}
+
+.flyingufo{
+    position: fixed;
+    left: -100px;
+    top: 100px;
+}
+.flyingufo img{
+    transform:rotate(-15deg);
+    height: 80px;
+    filter:invert(99.9%) drop-shadow(0px 0px 15px rgb(255, 255, 255, 0.7));
+    animation: flyingufoanim 1s infinite alternate;
+}
+
+@keyframes flyingufoanim {
+    from{
+        transform: translateY(30%) rotate(15deg);
+    }
+    to{
+        transform: translateY(-30%) rotate(15deg);
+    }
+    
+}
+
 .works-slider{
     width: 80%;
     margin: 0 auto;
     padding-bottom:80px;
 }
+.swiper{
+    width: 100%;
+    max-height: 500px;
+  }
 
 .contactform{
-    height: 100vh;
+    padding-bottom:40vh;
     background: rgba(18, 48, 61, 0.5);
     box-shadow: 0px -20px 20px rgba(0, 0, 0, 0.25);
 }
@@ -452,12 +530,14 @@ to { transform: translateX(120px) rotateY(360deg); } */
     padding: 52px 0;
 }
 .contact-inner .form{
+    overflow: hidden;
     margin-top: 7%;
     display:grid;
     grid-template-columns: 2;
     grid-template-rows: 2;
     grid-template-areas: "a b"
-                         "c c";
+                         "c c"
+                         "d d";
     gap: 80px;
     column-gap: 20%;
 }
@@ -480,6 +560,29 @@ to { transform: translateX(120px) rotateY(360deg); } */
     padding: 20px;
     min-height: 200px;
     resize: vertical;
+}
+.submitbutton{
+    height: 60px;
+    font-size: 24px;
+    font-weight: 700;
+    grid-area: d;
+    background: var(--blue-color);
+    -webkit-box-shadow: 4px 4px 0px 0px rgba(104, 148, 212, 0.5);
+    -moz-box-shadow: 4px 4px 0px 0px rgba(104, 148, 212, 0.5);
+    box-shadow: 4px 4px 0px 0px rgba(104, 148, 212, 0.5);
+    color: var(--white-color);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+    transform: translate(-4px,-4px);
+}
+.submitbutton:hover{
+    background: #004463;
+    
+}
+.submitbutton:active{
+    transform: translate(0px,0px);
+    box-shadow: none;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
 }
 
 footer{
@@ -510,9 +613,116 @@ footer{
 .footer-inner img{
     height: 50px;
 }
-
+.inner-nav-burger{
+    display: none;
+}
 /* end of origin css */
 
+@media only screen and (max-width:1024px){
+    .wrapper{
+        max-width: 1000px;
+    margin: 0px auto;
+    padding: 0px 30px;
+    }
+    .inner-nav{
+    display: none;
+    }
+    .inner-nav-burger{
+        display: block;
+        background: 100vw;
+        height: 100px;
+    }
+.burger-menu.active{
+    left: 0;
+}
+.burger-menu{
+    position: fixed;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    top: 0%;
+    left: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: var(--darkbluewgreen-color);
+    
+}
+.burger-menu ul{
+    list-style: none;
+    text-align: center;
+}
+.burger-menu ul li a{
+    color: var(--white-color);
+    font-size: 28px;
+    margin: auto;
+    text-decoration: none;
+}
+
+  #menu_checkbox {
+    display: none;
+  }
+  
+  label {
+    z-index: 99;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    transform: scale(0.8);
+    margin: -30px auto 0 auto;
+    cursor: pointer;
+  }
+  label div {
+    position: relative;
+    top: 0;
+    height: 7px;
+    background-color: #fff;
+    margin-bottom: 12px;
+    transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+      0.3s ease right;
+    border-radius: 2px;
+  }
+  
+  label div:first-child {
+    transform-origin: 0;
+  }
+  
+  label div:last-child {
+    margin-bottom: 0;
+    transform-origin: 60px;
+  }
+  
+  label div:nth-child(2) {
+    right: 0;
+    width: 60px;
+  }
+  
+  #menu_checkbox:checked + label:before {
+    background-color: #4caf50;
+  }
+  
+  #menu_checkbox:checked + label div:first-child {
+    top: -5px;
+    transform: rotateZ(45deg);
+  }
+  
+  #menu_checkbox:checked + label div:last-child {
+    top: 7px;
+    left:-10px;
+    transform: rotateZ(45deg);
+  }
+  
+  #menu_checkbox:checked + label div:nth-child(2) {
+    width: 70px;
+    top: 0;
+    right: 11px;
+    transform: rotateZ(-45deg);
+  }
+
+}
 
 
 

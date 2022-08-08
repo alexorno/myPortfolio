@@ -40,8 +40,40 @@
             </li>
           </ul>
         </div>
-    </nav>
+        
+        <div class="inner-nav-burger">
+          <div class="burger">
+            <input type="checkbox" id="menu_checkbox">
+            <label for="menu_checkbox">
+              <div></div>
+              <div></div>
+              <div></div>
+            </label>
+          </div>
+          <div class="burger-menu">
+            <ul>
+              <li>
+                <a href="index.html">Home</a>
+              </li>
 
+              <li>
+                <a href="/facilities.html">Facilities</a>
+              </li>
+
+              <li>
+                <a href="/rooms.html">Rooms</a>
+              </li>
+
+              <li>
+                <a href="/contactus.html">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>  
+    </nav>
+        
     <!-- <div id="particles-js"></div>  -->
 
       <div class="welcome-page">
@@ -55,7 +87,11 @@
       </div>
     </div>
   </header>
-
+  <div class="containeradditional">
+    <div class="alienicon">
+      <img src="/img/icons/alien-svgrepo-com.svg" alt="">
+    </div>
+  </div>
   <div class="aboutme">
     <div class="wrapper">
       <div class="about-inner">
@@ -64,7 +100,7 @@
             My name is Alex and i’m a front-end developer focusing on every pixel
           </h1>
           <p>
-            The main reason why i choose that area of work is that i always loved to create and learn something new,
+            If you need to develop your site from design (Figma, XD, etc.) you're in the right place. The main reason why i choose that area of work is that i always loved to create and learn something new,
             besides that i was making leather goods and was editing photos/videos as hobby.
           </p>
         </div>
@@ -85,6 +121,9 @@
             <img src="/img/FG-Resumepic.png" alt="">
             </div>
           </div>
+        </div>
+        <div class="planetadditional">
+          <img src="/img/icons/planet-svgrepo-com-3.svg" alt="">
         </div>
       </div>
     </div>
@@ -183,9 +222,42 @@
   <div class="works">
     <div class="wrapper">
       <div class="works-inner">
+        <div class="meteor">
+          <img src="/img/icons/meteorite-falling-svgrepo-com.svg" alt="">
+        </div>
+        <div class="flyingufo">
+          <img src="/img/icons/ufo-svgrepo-com-2.svg" alt="">
+        </div>
         <div class="title"><h1>Few of my latest works</h1></div>
         <div class="works-slider">
-          <img src="/img/Moxa-screenshot.png" alt="">
+          <!-- Slider main container -->
+            <div class="swiper">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <a href="https://moxa-alexu.netlify.app" target="_blank"><img src="/img/MOXAscreenshot.png" alt=""></a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="https://luxuryhotels-alexu.netlify.app" target="_blank">
+                    <img src="/img/luxuryhotelsScreenshot.png" alt="">
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="https://brgrfcourier.netlify.app" target="_blank">
+                    <img src="/img/BrgrScreenshot.png" alt="">
+                  </a>
+                </div>
+                ...
+              </div>
+              <!-- If we need pagination -->
+              <div class="swiper-pagination"></div>
+              <!-- If we need navigation buttons -->
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <!-- If we need scrollbar -->
+              <div class="swiper-scrollbar"></div>
+            </div>
         </div>
 
       </div>
@@ -195,16 +267,18 @@
   <div class="contactform">
     <div class="wrapper">
       <div class="contact-inner">
+        
         <div class="title">
           <h1>
             Contact Me
           </h1>
         </div>
-        <div class="form">
-          <input type="text" placeholder="Subject">
-          <input placeholder="E-mail" type="email" name="email" id="mail">
-          <textarea placeholder="Message" name="message" id="message"></textarea>
-        </div>
+          <div class="form">
+            <input type="text" placeholder="Subject">
+            <input placeholder="E-mail" type="email" name="email" id="mail">
+            <textarea placeholder="Message" name="message" id="message"></textarea>
+            <button type="submit" class="submitbutton">SEND</button>
+          </div>
       </div>
     </div>
   </div>
@@ -224,11 +298,14 @@
     </div>
   </footer>
 
-  <!-- particles -->
+  <!-- swiperjs -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <!-- particlesjs -->
   <link rel="stylesheet" href="particles.css">
   <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
   <script src="particles.js"></script>
-  <!-- gsapmin -->
+  <!-- gsap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- scrolltrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js" integrity="sha512-v8B8T8l8JiiJRGomPd2k+bPS98RWBLGChFMJbK1hmHiDHYq0EjdQl20LyWeIs+MGRLTWBycJGEGAjKkEtd7w5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
