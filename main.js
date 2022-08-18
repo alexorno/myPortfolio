@@ -18,13 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const welcomeText = document.querySelector('.welcome-page h1');
 const stringWelcomeText = welcomeText.textContent;
 const splitWelcomeText = stringWelcomeText.split('');
-
 welcomeText.textContent = "";
 
 for(let i=0; i < splitWelcomeText.length; i++){
   welcomeText.innerHTML += '<span>' + splitWelcomeText[i] + '</span>';
 }
-
 let charWelcomeText = 0;
 let timerWelcomeText = setInterval(welcomeTextFunc,50)
 
@@ -167,19 +165,13 @@ const swiper = new Swiper('.swiper', {
   // Optional parameters
   direction: 'horizontal',
   loop: true,
-
-  // If we need pagination
   pagination: {
     el: '.swiper-pagination',
   },
-
-  // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
-
-  // And if we need scrollbar
   scrollbar: {
     el: '.swiper-scrollbar',
   },
