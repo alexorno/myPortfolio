@@ -74,6 +74,11 @@ body::-webkit-scrollbar {
     /* for Chrome, Safari, and Opera */
   }
 
+::selection{
+    background-color: var(--white-color);
+    color:var(--blue-color)
+}
+
 .noscroll{
     height: 100%;
     width: 100%;
