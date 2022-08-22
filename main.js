@@ -60,11 +60,10 @@ function welcomeTextMoveMain(){
 
 setInterval(() => {
 document.removeEventListener('mousemove',welcomeTextMove)
-},30)
+},15)
 setInterval(() => {
   document.addEventListener('mousemove',welcomeTextMove)
-  },60)
-  requestAnimationFrame(welcomeTextMoveMain)
+  },40)
 };
 requestAnimationFrame(welcomeTextMoveMain)
 
@@ -88,10 +87,30 @@ requestAnimationFrame(animateAboutMe);
 // intro animation
 const tl = gsap.timeline({defaults: {ease:"power2.inout"}});
 
-tl.from('nav', {y:'-100%',opacity:'0.2', duration: 1,stagger:1 });
+tl.from('nav', {y:'-100%',opacity:'0.2', duration: 2,stagger:1 });
 tl.from('.welcome-page h1', {x:'-100px',opacity:'0.2', duration: 0.3,stagger:1 }, '-=0.75');
 
 tl.fromTo('.scrolldown-button', {y:"0", opacity:'0.8'}, {y:'25',opacity:'1', duration:1, repeat:-1, yoyo:true}, '-=0.75')
+tl.from('.alienmessage', {y:'200px', opacity:'0', duration: 3 }, '+=3');
+
+const alienMessage = document.querySelector('.alienmessage');
+
+function alienMessageDissapear(){
+  alienMessage.style.transform = 'translateX(-500px)'
+  setTimeout(() => {
+    alienMessage.style.display = 'none'
+  },1000)
+}
+
+alienMessage.addEventListener('click', alienMessageDissapear);
+
+setTimeout(() => {
+  alienMessage.removeEventListener('click', alienMessageDissapear);
+  alienMessageDissapear
+}, 17500)
+
+
+
 // scrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.defaults({ toggleActions: "play complete reverse reset", start: "0% bottom", end: "0% center" });
