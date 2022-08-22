@@ -42,6 +42,49 @@ function endTimer(){
   clearInterval(timerWelcomeText);
   timerWelcomeText = null;
 };
+// micro intractions
+
+function xCentCoorMouse(){
+return ((event.clientX) - (window.innerWidth / 2))
+};
+
+function yCentCoorMouse(){
+  return ((event.clientY) - (window.innerHeight / 2))
+};
+
+function welcomeTextMoveMain(){
+  function welcomeTextMove(){
+    welcomeText.style.transform = 
+  'translateX(' + (-50 - (xCentCoorMouse() / 100)) + '%' + ')' +
+  'translateY(' + (-50 - (yCentCoorMouse() / 75)) + '%' + ')'; 
+  }
+
+setInterval(() => {
+document.removeEventListener('mousemove',welcomeTextMove)
+},14)
+setInterval(() => {
+  document.addEventListener('mousemove',welcomeTextMove)
+  },60)
+};
+requestAnimationFrame(welcomeTextMoveMain)
+
+const aboutMeSection = document.querySelector('.aboutme')
+const aboutMeH1 = document.querySelector('.aboutme h1')
+const aboutMeP = document.querySelector('.aboutme p')
+function animateAboutMe(){
+aboutMeSection.addEventListener('mouseover', () => {
+  aboutMeH1.style.transform = 
+  'translateX(' + (xCentCoorMouse() / -250) + '%' + ')' +
+  'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
+
+  aboutMeP.style.transform = 
+  'translateX(' + (xCentCoorMouse() / -175) + '%' + ')' +
+  'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
+})
+requestAnimationFrame(animateAboutMe)
+};
+requestAnimationFrame(animateAboutMe);
+
 // intro animation
 const tl = gsap.timeline({defaults: {ease:"power2.inout"}});
 
@@ -51,29 +94,35 @@ tl.from('.welcome-page h1', {x:'-100px',opacity:'0.2', duration: 0.3,stagger:1 }
 tl.fromTo('.scrolldown-button', {y:"0", opacity:'0.8'}, {y:'25',opacity:'1', duration:1, repeat:-1, yoyo:true}, '-=0.75')
 // scrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.defaults({ toggleActions: "restart complete reverse reset", start: "0% bottom", end: "0% center" });
+ScrollTrigger.defaults({ toggleActions: "play complete reverse reset", start: "0% bottom", end: "0% center" });
 
-gsap.timeline({ scrollTrigger: { trigger: ".about-left h1", scrub:1 } })
+
+gsap.timeline({ scrollTrigger: { 
+  trigger: ".about-left h1", 
+  toggleActions: " play pause resume reset",
+  } })
 .to('.about-right', {
   keyframes: {
-    '0%': {x:'-500',y:'-1000', opacity:'0'},
+    '0%': {x:'-500',y:'-1000', opacity:'0', 'z-index':'-10', },
+    '0.1%': {'z-index':'0', },
     '25%': {x:'-900',y:'-600', opacity:'0.5'},
-    '50%': {x:'200',y:'-100'},
-    '100%': {x:'0',y:'0',opacity:'1'},
-  }
+    '50%': {x:'200',y:'-100', },
+    '100%': {x:'0',y:'0',opacity:'1', },
+    
+  },
+  duration: 2,
 });
+
 gsap.timeline({scrollTrigger:{trigger:'.about-left h1', scrub:1}})
 .from('.about-left h1', {
   x:'-300px',
   rotateY:'180deg',
-  filter:'blur(10px)',
   opacity:'0'
 });
-gsap.timeline({scrollTrigger:{trigger:'.about-left p', scrub:1, end:'top center'}})
+gsap.timeline({scrollTrigger:{trigger:'.about-left p', scrub:1, end:'-100% center'}})
 .from('.about-left p', {
   x:'-270px',
   rotateY:'160deg',
-  filter:'blur(10px)',
   opacity:'0'
 });
 gsap.timeline({scrollTrigger:{trigger:'.skills-inner .title', scrub:1, end:'top center'}})
