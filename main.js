@@ -42,49 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timerWelcomeText);
     timerWelcomeText = null;
   };
-  // micro intractions
-
-  function xCentCoorMouse() {
-    return ((event.clientX) - (window.innerWidth / 2))
-  };
-
-  function yCentCoorMouse() {
-    return ((event.clientY) - (window.innerHeight / 2))
-  };
-  //fix from staggering with fast moves of mouse
-  function welcomeTextMoveMain() {
-    function welcomeTextMove() {
-      welcomeText.style.transform =
-        'translateX(' + (-50 - (xCentCoorMouse() / 100)) + '%' + ')' +
-        'translateY(' + (-50 - (yCentCoorMouse() / 75)) + '%' + ')';
-    }
-
-    setInterval(() => {
-      document.removeEventListener('mousemove', welcomeTextMove)
-    }, 15)
-    setInterval(() => {
-      document.addEventListener('mousemove', welcomeTextMove)
-    }, 40)
-  };
-  requestAnimationFrame(welcomeTextMoveMain)
-
-  const aboutMeSection = document.querySelector('.aboutme')
-  const aboutMeH1 = document.querySelector('.aboutme h1')
-  const aboutMeP = document.querySelector('.aboutme p')
-
-  function animateAboutMe() {
-    aboutMeSection.addEventListener('mousemove', () => {
-      aboutMeH1.style.transform =
-        'translateX(' + (xCentCoorMouse() / -250) + '%' + ')' +
-        'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
-
-      aboutMeP.style.transform =
-        'translateX(' + (xCentCoorMouse() / -175) + '%' + ')' +
-        'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
-    })
-    requestAnimationFrame(animateAboutMe)
-  };
-  requestAnimationFrame(animateAboutMe);
 
   // intro animation
   const tl = gsap.timeline({
@@ -139,6 +96,62 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 17500)
 
 
+  // navigation
+  const btnDown = document.querySelector('.scrolldown-button');
+  const aboutLeft = document.querySelector('.about-left');
+  btnDown.addEventListener('click', () => {
+    aboutLeft.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+
+  const homeBtn = document.getElementById('homeBtn');
+  const aboutBtn = document.getElementById('aboutBtn');
+  const skillsBtn = document.getElementById('skillsBtn');
+  const worksBtn = document.getElementById('worksBtn');
+  const contactBtn = document.getElementById('contactBtn');
+  const home = document.querySelector('.welcome-page h1');
+  const skills = document.querySelector('.skills-inner');
+  const works = document.querySelector('.works-inner');
+  const contact = document.querySelector('.contactform');
+
+  homeBtn.addEventListener('click', () => {
+    home.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+  aboutBtn.addEventListener('click', () => {
+    aboutLeft.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+  skillsBtn.addEventListener('click', () => {
+    skills.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+  worksBtn.addEventListener('click', () => {
+    works.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+  contactBtn.addEventListener('click', () => {
+    contact.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  });
+  const burgerMenu = document.querySelector('.burger-menu')
+  const checkboxMenu = document.getElementById('menu_checkbox')
+  checkboxMenu.addEventListener('click', () => {
+    burgerMenu.classList.toggle('active')
+    body.classList.toggle('noscroll')
+  });
 
   // scrollTrigger
   gsap.registerPlugin(ScrollTrigger);
@@ -349,8 +362,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+  // micro intractions
 
+  function xCentCoorMouse() {
+    return ((event.clientX) - (window.innerWidth / 2))
+  };
 
+  function yCentCoorMouse() {
+    return ((event.clientY) - (window.innerHeight / 2))
+  };
+  //fix from staggering with fast moves of mouse
+  function welcomeTextMoveMain() {
+    function welcomeTextMove() {
+      welcomeText.style.transform =
+        'translateX(' + (-50 - (xCentCoorMouse() / 100)) + '%' + ')' +
+        'translateY(' + (-50 - (yCentCoorMouse() / 75)) + '%' + ')';
+    }
+
+    setInterval(() => {
+      document.removeEventListener('mousemove', welcomeTextMove)
+    }, 15)
+    setInterval(() => {
+      document.addEventListener('mousemove', welcomeTextMove)
+    }, 40)
+  };
+  requestAnimationFrame(welcomeTextMoveMain)
+
+  const aboutMeSection = document.querySelector('.aboutme')
+  const aboutMeH1 = document.querySelector('.aboutme h1')
+  const aboutMeP = document.querySelector('.aboutme p')
+
+  function animateAboutMe() {
+    aboutMeSection.addEventListener('mousemove', () => {
+      aboutMeH1.style.transform =
+        'translateX(' + (xCentCoorMouse() / -250) + '%' + ')' +
+        'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
+
+      aboutMeP.style.transform =
+        'translateX(' + (xCentCoorMouse() / -175) + '%' + ')' +
+        'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
+    })
+    requestAnimationFrame(animateAboutMe)
+  };
+  requestAnimationFrame(animateAboutMe);
+
+  // swiper
 
   const swiper = new Swiper('.swiper', {
     // Optional parameters
@@ -368,61 +424,5 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
-  // navigation
-  const btnDown = document.querySelector('.scrolldown-button');
-  const aboutLeft = document.querySelector('.about-left');
-  btnDown.addEventListener('click', () => {
-    aboutLeft.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-
-  const homeBtn = document.getElementById('homeBtn');
-  const aboutBtn = document.getElementById('aboutBtn');
-  const skillsBtn = document.getElementById('skillsBtn');
-  const worksBtn = document.getElementById('worksBtn');
-  const contactBtn = document.getElementById('contactBtn');
-  const home = document.querySelector('.welcome-page h1');
-  const skills = document.querySelector('.skills-inner');
-  const works = document.querySelector('.works-inner');
-  const contact = document.querySelector('.contactform');
-
-  homeBtn.addEventListener('click', () => {
-    home.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  aboutBtn.addEventListener('click', () => {
-    aboutLeft.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  skillsBtn.addEventListener('click', () => {
-    skills.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  worksBtn.addEventListener('click', () => {
-    works.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  contactBtn.addEventListener('click', () => {
-    contact.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  const burgerMenu = document.querySelector('.burger-menu')
-  const checkboxMenu = document.getElementById('menu_checkbox')
-  checkboxMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active')
-    body.classList.toggle('noscroll')
-  });
 
 });
