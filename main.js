@@ -47,11 +47,10 @@ function endTimer(){
 function xCentCoorMouse(){
 return ((event.clientX) - (window.innerWidth / 2))
 };
-
 function yCentCoorMouse(){
   return ((event.clientY) - (window.innerHeight / 2))
 };
-
+//fix from staggering with fast moves of mouse
 function welcomeTextMoveMain(){
   function welcomeTextMove(){
     welcomeText.style.transform = 
@@ -61,10 +60,11 @@ function welcomeTextMoveMain(){
 
 setInterval(() => {
 document.removeEventListener('mousemove',welcomeTextMove)
-},14)
+},30)
 setInterval(() => {
   document.addEventListener('mousemove',welcomeTextMove)
   },60)
+  requestAnimationFrame(welcomeTextMoveMain)
 };
 requestAnimationFrame(welcomeTextMoveMain)
 
@@ -72,7 +72,7 @@ const aboutMeSection = document.querySelector('.aboutme')
 const aboutMeH1 = document.querySelector('.aboutme h1')
 const aboutMeP = document.querySelector('.aboutme p')
 function animateAboutMe(){
-aboutMeSection.addEventListener('mouseover', () => {
+aboutMeSection.addEventListener('mousemove', () => {
   aboutMeH1.style.transform = 
   'translateX(' + (xCentCoorMouse() / -250) + '%' + ')' +
   'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
@@ -151,7 +151,6 @@ gsap.timeline({scrollTrigger:{trigger:'.works-inner', scrub:1, end:'40% center'}
 .from('.works .title h1,.works-slider', {
   y:'-50%',
   rotateX:'90deg',
-  filter:'blur(7px)',
   opacity:'0.5'
 });
 gsap.timeline({scrollTrigger:{trigger:'.contact-inner .title', scrub:1, end:'40% center'}})
