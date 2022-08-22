@@ -276,7 +276,7 @@ nav::after {
 }
 
 .alienmessage::after {
-    content: 'try to click on background';
+    content: 'try to click on first background';
     border-radius: 10px;
     text-align: center;
     font-size: 14px;
