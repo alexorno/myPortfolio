@@ -1017,7 +1017,8 @@ footer {
     }
 
     .welcome-page h1 {
-        font-size: 28px;
+        font-size: 36px;
+        font-weight: 400;
     }
 
     .scrolldown-button {
@@ -1077,6 +1078,9 @@ footer {
 @media screen and (max-width:375px) {
     .welcome-page h1 {
         font-size: 26px;
+    }
+    .welcome-page span{
+        margin: 0 0.5px;
     }
 
     .about-right .mainlines {
