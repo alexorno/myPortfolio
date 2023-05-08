@@ -73,27 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
     repeat: -1,
     yoyo: true
   }, '-=0.75')
-  tl.from('.alienmessage', {
-    y: '200px',
-    opacity: '0',
-    duration: 3
-  }, '+=3');
+
+
 
   const alienMessage = document.querySelector('.alienmessage');
 
+  tl.from(alienMessage, {
+    y: '200px',
+    opacity: '0',
+    duration: 2
+  }, '+=2');
+
+  alienMessage.addEventListener('click', () => alienMessageDissapear());
+
+  const alienMessageTimeout = setTimeout(() => {
+    console.log('timeos')
+    alienMessage.removeEventListener('click', alienMessageDissapear);
+    alienMessageDissapear()
+  }, 15000)
+
   function alienMessageDissapear() {
-    alienMessage.style.transform = 'translateX(-500px)'
+    alienMessage.style.transform = 'translateX(-500px)';
+    clearTimeout(alienMessageTimeout)
     setTimeout(() => {
       alienMessage.style.display = 'none'
     }, 1000)
   }
-
-  alienMessage.addEventListener('click', alienMessageDissapear);
-
-  setTimeout(() => {
-    alienMessage.removeEventListener('click', alienMessageDissapear);
-    alienMessageDissapear
-  }, 17500)
 
 
   // navigation
@@ -105,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       block: "center"
     })
   });
-
+  
   const homeBtn = document.getElementById('homeBtn');
   const aboutBtn = document.getElementById('aboutBtn');
   const skillsBtn = document.getElementById('skillsBtn');
@@ -303,7 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollTrigger: {
         trigger: '.contact-inner .form textarea',
         scrub: 1,
-        end: '100% bottom'
+        start: '-100% bottom',
+        end: 'top +100%'
       }
     })
     .from('.contact-inner .form textarea', {
@@ -371,29 +377,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function yCentCoorMouse() {
     return ((event.clientY) - (window.innerHeight / 2))
   };
-  //fix from staggering with fast moves of mouse
-  function welcomeTextMoveMain() {
+
+  //animte divs on moves of mouse
+  
+  document.addEventListener('mousemove', welcomeTextMove)
     function welcomeTextMove() {
       welcomeText.style.transform =
-        'translateX(' + (-50 - (xCentCoorMouse() / 100)) + '%' + ')' +
-        'translateY(' + (-50 - (yCentCoorMouse() / 75)) + '%' + ')';
+        'translateX(' + (-50 - (xCentCoorMouse() / 90)) + '%' + ')' +
+        'translateY(' + (-50 - (yCentCoorMouse() / 70)) + '%' + ')';
     }
-
-    setInterval(() => {
-      document.removeEventListener('mousemove', welcomeTextMove)
-    }, 15)
-    setInterval(() => {
-      document.addEventListener('mousemove', welcomeTextMove)
-    }, 40)
-  };
-  requestAnimationFrame(welcomeTextMoveMain)
 
   const aboutMeSection = document.querySelector('.aboutme')
   const aboutMeH1 = document.querySelector('.aboutme h1')
   const aboutMeP = document.querySelector('.aboutme p')
 
+  aboutMeSection.addEventListener('mousemove', animateAboutMe)
   function animateAboutMe() {
-    aboutMeSection.addEventListener('mousemove', () => {
       aboutMeH1.style.transform =
         'translateX(' + (xCentCoorMouse() / -250) + '%' + ')' +
         'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
@@ -401,10 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
       aboutMeP.style.transform =
         'translateX(' + (xCentCoorMouse() / -175) + '%' + ')' +
         'translateY(' + (yCentCoorMouse() / -200) + '%' + ')';
-    })
-    requestAnimationFrame(animateAboutMe)
   };
-  requestAnimationFrame(animateAboutMe);
 
   // swiper
 

@@ -211,7 +211,7 @@ nav::after {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.2s;
+    /* transition: transform 0.1s; */
 }
 
 .welcome-page h1 span {
@@ -325,7 +325,7 @@ nav::after {
 }
 
 .about-left h1 {
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
     font-weight: 600;
     font-size: 32px;
     text-align: center;
@@ -333,7 +333,7 @@ nav::after {
 }
 
 .about-left p {
-    transition: all 0.2s;
+    /* transition: all 0.2s; */
     font-size: 18px;
     text-align: center;
 }
