@@ -13,7 +13,7 @@ let stateCheck = setInterval(() => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // welcome text load
   const welcomeText = document.querySelector('.welcome-page h1');
   const stringWelcomeText = welcomeText.textContent;
@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
   alienMessage.addEventListener('click', () => alienMessageDissapear());
 
   const alienMessageTimeout = setTimeout(() => {
-    console.log('timeos')
     alienMessage.removeEventListener('click', alienMessageDissapear);
     alienMessageDissapear()
   }, 15000)
@@ -110,52 +109,83 @@ document.addEventListener('DOMContentLoaded', () => {
       block: "center"
     })
   });
-  
-  const homeBtn = document.getElementById('homeBtn');
-  const aboutBtn = document.getElementById('aboutBtn');
-  const skillsBtn = document.getElementById('skillsBtn');
-  const worksBtn = document.getElementById('worksBtn');
-  const contactBtn = document.getElementById('contactBtn');
+// adding eventlistener to scroll to part where btn assigned to
+  const homeBtn = document.getElementsByClassName('homeBtn');
+  const aboutBtn = document.getElementsByClassName('aboutBtn');
+  const skillsBtn = document.getElementsByClassName('skillsBtn');
+  const worksBtn = document.getElementsByClassName('worksBtn');
+  const contactBtn = document.getElementsByClassName('contactBtn');
+
   const home = document.querySelector('.welcome-page h1');
   const skills = document.querySelector('.skills-inner');
   const works = document.querySelector('.works-inner');
   const contact = document.querySelector('.contactform');
 
-  homeBtn.addEventListener('click', () => {
-    home.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  aboutBtn.addEventListener('click', () => {
-    aboutLeft.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  skillsBtn.addEventListener('click', () => {
-    skills.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  worksBtn.addEventListener('click', () => {
-    works.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
-  contactBtn.addEventListener('click', () => {
-    contact.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    })
-  });
+  const toggleMobileMenu = () => {
+    burgerMenu.classList.toggle('active')
+    body.classList.toggle('noscroll')
+  }
+
+  const closeMobileMenu = () => {
+    burgerMenu.classList.remove('active')
+    body.classList.remove('noscroll')
+  }
+
+for (let item of homeBtn){
+  item.addEventListener('click', () => {
+    closeMobileMenu()
+      home.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      })
+    });
+}
+
+for (let item of aboutBtn){
+  item.addEventListener('click', () => {
+    closeMobileMenu()
+      aboutLeft.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      })
+    });
+}
+
+for (let item of skillsBtn){
+  item.addEventListener('click', () => {
+    closeMobileMenu()
+      skills.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      })
+    });
+}
+
+for (let item of worksBtn){
+  item.addEventListener('click', () => {
+    closeMobileMenu()
+      works.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      })
+    });
+}
+
+for (let item of contactBtn){
+  item.addEventListener('click', () => {
+    closeMobileMenu()
+      contact.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      })
+    });
+}
+  
+
   const burgerMenu = document.querySelector('.burger-menu')
   const checkboxMenu = document.getElementById('menu_checkbox')
   checkboxMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active')
-    body.classList.toggle('noscroll')
+    toggleMobileMenu()
   });
 
   // scrollTrigger
@@ -404,21 +434,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // swiper
 
-  const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  });
+  // const swiper = new Swiper('.swiper', {
+  //   // Optional parameters
+  //   direction: 'horizontal',
+  //   loop: true,
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  //   scrollbar: {
+  //     el: '.swiper-scrollbar',
+  //   },
+  // });
 
+  // mapping through projects on github and printing them in HTML
 
+  let projectsJson 
+  const fetchedPosts = await fetch('https://api.github.com/users/alexorno/repos?sort=updated&direction=asc', {
+    headers: {
+      'Authorization': 'Bearer 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',
+    }
+  }).then(data => data.json()).then(array => projectsJson = array);
+  console.log(projectsJson);
+
+  const projectsContainer = document.getElementById('projects-container');
+
+  const mappedUsers = projectsJson.map((project, i) => {
+    return `
+    <div class='project-card' key=${i} > 
+      <a href="${project.homepage}" target="_blank">
+        <p class="name"> ${project.name}</p>
+        <p class="description">${project?.description}</p>
+        <div class="tags">
+          Tags: ${(project.topics).map((item) => `<li>${item}</li>`).join('')}
+        </div>
+        <p class="link"> ${project?.homepage} </p>
+      </a>
+    </div>
+  `;
+  }).join('');
+
+  projectsContainer.innerHTML = mappedUsers;
 });
