@@ -11,7 +11,7 @@ let stateCheck = setInterval(() => {
 }, 100);
 
 
-
+import {GIT_KEY} from './config.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
   // welcome text load
@@ -455,7 +455,7 @@ for (let item of contactBtn){
   let projectsJson 
   const fetchedPosts = await fetch('https://api.github.com/users/alexorno/repos?sort=updated&direction=asc', {
     headers: {
-      'Authorization': 'Bearer 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',
+      'Authorization': `Bearer ${GIT_KEY}`,
     }
   }).then(data => data.json()).then(array => projectsJson = array);
   console.log(projectsJson);

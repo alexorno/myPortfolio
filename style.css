@@ -511,7 +511,7 @@ nav::after {
     list-style: none;
     display: flex;
     position: relative;
-    margin-bottom: 75px;
+    margin-bottom: 5%;
 }
 
 .skills-list ul li::before {
@@ -1056,10 +1056,6 @@ footer {
         text-align: center;
     }
 
-    .skills-list ul li .stars {
-        position: initial;
-        margin: 5px auto;
-    }
 
     .skills-list ul li::before {
         display: none;
