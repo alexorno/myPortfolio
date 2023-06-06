@@ -192,7 +192,8 @@ nav::after {
 
 .inner-nav ul li:nth-child(4) {
     font-weight: 700;
-    font-size: calc(100% + 3px);
+    font-size: calc(100% + 1px); 
+    transform: translateY(-1px);
 }
 
 .welcome-page {
@@ -267,7 +268,7 @@ nav::after {
     left: 35px;
     width: 50px;
     height: 50px;
-    z-index: 0;
+    z-index: 2;
     transition: all 1s ease-in-out;
 }
 
